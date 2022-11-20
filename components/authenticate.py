@@ -238,7 +238,7 @@ html_css_login = """
 
 html_button_login = (
     html_css_login
-    + f"<a href='{login_link}' class='button-login' target='_self'>{login_link}</a>"
+    + f"<a href='{COGNITO_DOMAIN}/login?client_id={CLIENT_ID}&response_type=code&scope=email+openid&redirect_uri={APP_URI}' class='button-login' target='_self'>Log In</a>"
 )
 html_button_logout = (
     html_css_login
