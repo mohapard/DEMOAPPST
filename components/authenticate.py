@@ -1,6 +1,5 @@
 import os
 import streamlit as st
-from dotenv import load_dotenv
 import requests
 import base64
 import json
@@ -8,7 +7,6 @@ import json
 # ------------------------------------
 # Read constants from environment file
 # ------------------------------------
-load_dotenv()
 COGNITO_DOMAIN = os.environ.get("COGNITO_DOMAIN")
 CLIENT_ID = os.environ.get("CLIENT_ID")
 CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
