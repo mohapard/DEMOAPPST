@@ -2,7 +2,6 @@ import streamlit as st
 import boto3
 import io
 import components.authenticate as authenticate
-from dotenv import load_dotenv
 import os
 import json
 st.set_page_config(
@@ -11,7 +10,7 @@ st.set_page_config(
     layout="wide",
 )
 
-load_dotenv()
+
 
 
 
