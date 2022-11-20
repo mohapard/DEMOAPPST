@@ -238,7 +238,7 @@ html_css_login = """
 
 html_button_login = (
     html_css_login
-    + f"<a href='{login_link}' class='button-login' target='_self'>f"{login_link}"</a>"
+    + f"<a href='{login_link}' class='button-login' target='_self'>{login_link}</a>"
 )
 html_button_logout = (
     html_css_login
