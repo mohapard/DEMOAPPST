@@ -13,6 +13,7 @@ CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
 APP_URI = os.environ.get("APP_URI")
 print(COGNITO_DOMAIN)
 print(CLIENT_ID)
+return COGNITO_DOMAIN
 
 # ------------------------------------
 # Initialise Streamlit state variables
@@ -193,18 +194,19 @@ def set_st_state_vars():
     Returns:
         Nothing.
     """
-    initialise_st_state_vars()
+    resp = initialise_st_state_vars()
     auth_code = get_auth_code()
     access_token, id_token = get_user_tokens(auth_code)
     user_cognito_groups = get_user_cognito_groups(id_token)
     user_info = get_user_info(access_token)
     #print(user_info)
-
+    
     if access_token != "":
         st.session_state["auth_code"] = auth_code
         st.session_state["authenticated"] = True
         st.session_state["user_cognito_groups"] = user_cognito_groups
         st.session_state["user_info"]= user_info
+    return resp
 
 
 # -----------------------------
