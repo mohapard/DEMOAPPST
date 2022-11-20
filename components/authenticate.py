@@ -8,11 +8,10 @@ import json
 # Read constants from environment file
 # ------------------------------------
 COGNITO_DOMAIN = st.secrets["COGNITO_DOMAIN"]
-CLIENT_ID = os.environ.get("CLIENT_ID")
-CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
-APP_URI = os.environ.get("APP_URI")
-print(COGNITO_DOMAIN)
-print(CLIENT_ID)
+CLIENT_ID = st.secrets["CLIENT_ID"]
+CLIENT_SECRET = st.secrets["CLIENT_SECRET"]
+APP_URI = st.secrets["APP_URI"]
+
 
 
 # ------------------------------------
