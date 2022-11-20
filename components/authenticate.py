@@ -205,7 +205,7 @@ def set_st_state_vars():
         st.session_state["authenticated"] = True
         st.session_state["user_cognito_groups"] = user_cognito_groups
         st.session_state["user_info"]= user_info
-    return COGNITO_DOMAIN
+    return f"{COGNITO_DOMAIN}/login?client_id={CLIENT_ID}&response_type=code&scope=email+openid&redirect_uri={APP_URI}"
 
 
 # -----------------------------
