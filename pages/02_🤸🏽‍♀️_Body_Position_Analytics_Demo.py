@@ -16,8 +16,8 @@ st.set_page_config(
 
 def downloadBucketFile(filename):
     s3= boto3.client('s3',
-        aws_access_key_id=os.environ.get('S3_KEY'),
-        aws_secret_access_key=os.environ.get('S3_SECRET')
+        aws_access_key_id=st.secrets['S3_KEY'],
+        aws_secret_access_key=st.secrets['S3_SECRET']
     )
     data = io.BytesIO()
     video = s3.download_fileobj("code-bear-aws-badr",filename,data)
@@ -27,8 +27,8 @@ def downloadBucketFile(filename):
 
 def getBucketFiles(email):
     session = boto3.Session(
-        aws_access_key_id=os.environ.get('S3_KEY'),
-        aws_secret_access_key=os.environ.get('S3_SECRET')
+        aws_access_key_id=st.secrets['S3_KEY'],
+        aws_secret_access_key=st.secrets['S3_SECRET']
     )
     s3 = session.resource('s3')
     mybucket = s3.Bucket("code-bear-aws-badr")
@@ -39,13 +39,13 @@ def getBucketFiles(email):
     return objs
 
 def sendSQS(user_email,videotitle):
-    sqs_client = boto3.client("sqs", region_name="eu-central-1",aws_access_key_id=os.environ['S3_KEY'],
-        aws_secret_access_key=os.environ['S3_SECRET'])
+    sqs_client = boto3.client("sqs", region_name="eu-central-1",aws_access_key_id=st.secrets['S3_KEY'],
+        aws_secret_access_key=st.secrets['S3_SECRET'])
     filename = str(user_email)+'/'+str(videotitle)+'.mp4'
     #print(filename)
     message = {"text": filename}
     response = sqs_client.send_message(
-        QueueUrl=os.environ['WORKERQUEUE'],
+        QueueUrl=st.secrets['WORKERQUEUE'],
         MessageBody=json.dumps(message)
     )
     #print(response)
@@ -53,8 +53,8 @@ def sendSQS(user_email,videotitle):
 
 def uploadMP4ToS3(mp4file,user_email,videotitle):
     session = boto3.Session(
-        aws_access_key_id=os.environ.get('S3_KEY'),
-        aws_secret_access_key=os.environ.get('S3_SECRET')
+        aws_access_key_id=st.secrets['S3_KEY'],
+        aws_secret_access_key=st.secrets['S3_SECRET']
     )
 
 
