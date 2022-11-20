@@ -1,7 +1,7 @@
 import streamlit as st
 import components.authenticate as authenticate
 import boto3
-from dotenv import load_dotenv
+
 import os
 import io
 
@@ -11,7 +11,7 @@ st.set_page_config(
     page_icon="👾",
     layout="wide",
 )
-load_dotenv()
+
 # Check authentication when user lands on the home page.
 authenticate.set_st_state_vars()
 
