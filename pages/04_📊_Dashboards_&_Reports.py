@@ -1,8 +1,7 @@
 import streamlit as st
 import components.authenticate as authenticate
-
 st.set_page_config(
-    page_title="Contact Us",
+    page_title="Dash",
     page_icon="👾",
     layout="wide",
 )
