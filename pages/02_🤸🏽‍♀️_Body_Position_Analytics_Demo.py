@@ -107,12 +107,12 @@ if (
         if uploaded_mp4 and user_email is not None:
             
             if uploaded_mp4.type != "video/mp4":
-                container1.error('Only MP4 videos are supported. Please upload a different file')
+                st.error('Only MP4 videos are supported. Please upload a different file')
                 
             else:
-                container1.warning("["+uploaded_mp4.name + '] selected. \n'+'Click on the button below to start processing.')
+                st.warning("["+uploaded_mp4.name + '] selected. \n'+'Click on the button below to start processing.')
                 #bytes_data = uploaded_mp4.getvalue()
-                if container1.button('Upload and Send for Processing'):
+                if st.button('Upload and Send for Processing'):
                     if user_email !="" and videotitle!="":
                         with st.spinner('Uploading...'):
                             uploadMP4ToS3(uploaded_mp4,user_email,videotitle)
