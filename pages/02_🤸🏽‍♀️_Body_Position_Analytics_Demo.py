@@ -97,7 +97,7 @@ if (
     
     colstop = st.columns(2)
     container1 = colstop[0].container()
-    container1.subheader("Step 1: Please Upload your video files here")
+    container1.subheader("Step 1: Upload your video (mp4 only)")
     my_expander1 = container1.expander("Click to Expand Step 1", expanded=False)
     with my_expander1:
         #cols = st.columns(4)
