@@ -18,6 +18,7 @@ def ShowVideo(optionvideo):
         try:
             with st.spinner('Loading Video...'):
                 back = str(user_email) + "/" + str(optionvideo)+".mp4"
+                st.warning(back)
                 my_expander3.video(downloadBucketFile(back))
         except:
             st.error("Couldn't retrieve video")
