@@ -15,13 +15,13 @@ def ShowVideo(optionvideo):
     container3 = st.container()
     container3.subheader("Your Video")
     if str(optionvideo)!=" ":
-        #try:
+        try:
             with st.spinner('Loading Video...'):
                 back = str(user_email) + "/" + str(optionvideo)+".mp4"
-                st.warning(back)
-                my_expander3.video(downloadBucketFile(back))
-        #except:
-        #    st.error("Couldn't retrieve video")
+                #st.warning(back)
+                st.video(downloadBucketFile(back))
+        except:
+            st.error("Couldn't retrieve video")
     else:
         st.error("No video to display")
 
