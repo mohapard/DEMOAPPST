@@ -133,28 +133,31 @@ if (
         videos=[]
         if fetchbutton:
             filenames = getBucketFiles(user_email)
-            videos=[]
+            videos=[""]
         for filename in filenames:
             hi = "".join(filename.key.split('/')[1:])[:-4]
             videos.append(hi)
 
         optionvideo = my_expander2.selectbox("Your Videos: (Processing usually takes 5-10 mins) ",videos)
-
+        if optionvideo != "":
+            ShowVideo(optionvideo)
     
-    container3 = st.container()
-    container3.subheader("Step 3: Display your video")
-    my_expander3 = st.expander("Click to Expand Step 3", expanded=False)
-    with my_expander3:
-        if my_expander3.button('Display Video: ' + str(optionvideo)):
-            if str(optionvideo)!="":
-                try:
-                    with st.spinner('Loading Video...'):
-                        back = str(user_email) + "/" + str(optionvideo)+".mp4"
-                        my_expander3.video(downloadBucketFile(back))
-                except:
-                    st.error("Couldn't retrieve video")
-            else:
-                st.error("No video to display")
+    
+    def ShowVideo(optionvideo):
+        container3 = st.container()
+        container3.subheader("Step 3: Your Video")
+        my_expander3 = st.expander("Click to Expand Step 3", expanded=False)
+        with my_expander3:
+            if my_expander3.button('Display Video: ' + str(optionvideo)):
+                if str(optionvideo)!="":
+                    try:
+                        with st.spinner('Loading Video...'):
+                            back = str(user_email) + "/" + str(optionvideo)+".mp4"
+                            my_expander3.video(downloadBucketFile(back))
+                    except:
+                        st.error("Couldn't retrieve video")
+                else:
+                    st.error("No video to display")
 
     
     
