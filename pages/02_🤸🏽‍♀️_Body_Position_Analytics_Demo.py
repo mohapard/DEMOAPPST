@@ -16,16 +16,15 @@ def ShowVideo(optionvideo):
     container3.subheader("Step 3: Your Video")
     my_expander3 = st.expander("Click to Expand Step 3", expanded=False)
     with my_expander3:
-        if my_expander3.button('Display Video: ' + str(optionvideo)):
-            if str(optionvideo)!="":
-                try:
-                    with st.spinner('Loading Video...'):
-                        back = str(user_email) + "/" + str(optionvideo)+".mp4"
-                        my_expander3.video(downloadBucketFile(back))
-                except:
-                    st.error("Couldn't retrieve video")
-            else:
-                st.error("No video to display")
+        if str(optionvideo)!=" ":
+            try:
+                with st.spinner('Loading Video...'):
+                    back = str(user_email) + "/" + str(optionvideo)+".mp4"
+                    my_expander3.video(downloadBucketFile(back))
+            except:
+                st.error("Couldn't retrieve video")
+        else:
+            st.error("No video to display")
 
 
 
