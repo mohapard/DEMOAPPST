@@ -102,7 +102,7 @@ if (
     with my_expander1:
         #cols = st.columns(4)
         uploaded_mp4 = my_expander1.file_uploader("Select an MP4 file")
-        videotitle= my_expander1.text_input('Video Title', 'Video0')
+        
         
         if uploaded_mp4 and user_email is not None:
             
@@ -110,6 +110,7 @@ if (
                 st.error('Only MP4 videos are supported. Please upload a different file')
                 
             else:
+                videotitle= my_expander1.text_input('Video Title', 'Video0')
                 st.warning("["+uploaded_mp4.name + '] selected. \n'+'Click on the button below to start processing.')
                 #bytes_data = uploaded_mp4.getvalue()
                 if st.button('Upload and Send for Processing'):
