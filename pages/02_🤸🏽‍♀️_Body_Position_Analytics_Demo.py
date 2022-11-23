@@ -154,8 +154,8 @@ if (
             videos.append(hi)
 
         optionvideo = my_expander2.selectbox("Your Videos: (Processing usually takes 5-10 mins) ",videos)
-        if optionvideo != "":
-            ShowVideo(optionvideo)
+    if optionvideo != "":
+        ShowVideo(optionvideo)
     
     
     
