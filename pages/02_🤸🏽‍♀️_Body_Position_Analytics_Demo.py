@@ -134,7 +134,8 @@ if (
             filenames = getBucketFiles(user_email)
             videos=[]
         for filename in filenames:
-            videos.append(filename.key)
+            hi = "".join(filename.key.split('/')[1:])[:-4]
+            videos.append(hi)
 
         optionvideo = my_expander2.selectbox("Your Videos: (NOTE: Processing usually takes 5-10 mins after Step 1[Upload]) ",videos)
 
@@ -147,7 +148,8 @@ if (
             if str(optionvideo)!="":
                 try:
                     with st.spinner('Loading Video...'):
-                        my_expander3.video(downloadBucketFile(str(optionvideo)))
+                        back = str(user_email) + "/" + str(optionvideo)+".mp4"
+                        my_expander3.video(downloadBucketFile(back))
                 except:
                     st.error("Couldn't retrieve video")
             else:
