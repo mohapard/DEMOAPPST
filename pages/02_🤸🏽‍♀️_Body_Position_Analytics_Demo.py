@@ -13,18 +13,16 @@ st.set_page_config(
 
 def ShowVideo(optionvideo):
     container3 = st.container()
-    container3.subheader("Step 3: Your Video")
-    my_expander3 = st.expander("Click to Expand Step 3", expanded=False)
-    with my_expander3:
-        if str(optionvideo)!=" ":
-            try:
-                with st.spinner('Loading Video...'):
-                    back = str(user_email) + "/" + str(optionvideo)+".mp4"
-                    my_expander3.video(downloadBucketFile(back))
-            except:
-                st.error("Couldn't retrieve video")
-        else:
-            st.error("No video to display")
+    container3.subheader("Your Video")
+    if str(optionvideo)!=" ":
+        try:
+            with st.spinner('Loading Video...'):
+                back = str(user_email) + "/" + str(optionvideo)+".mp4"
+                my_expander3.video(downloadBucketFile(back))
+        except:
+            st.error("Couldn't retrieve video")
+    else:
+        st.error("No video to display")
 
 
 
