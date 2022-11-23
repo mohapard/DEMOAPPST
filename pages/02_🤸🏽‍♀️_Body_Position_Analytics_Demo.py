@@ -145,7 +145,7 @@ if (
     with my_expander2:
         fetchbutton = my_expander2.button("Refresh Video List")
         filenames = getBucketFiles(user_email)
-        videos=[]
+        videos=[" "]
         if fetchbutton:
             filenames = getBucketFiles(user_email)
             videos=[" "]
