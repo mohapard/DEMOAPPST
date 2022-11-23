@@ -118,7 +118,7 @@ if (
                             uploadMP4ToS3(uploaded_mp4,user_email,videotitle)
                             response = sendSQS(user_email,videotitle)
                             if response["ResponseMetadata"]["HTTPStatusCode"] == 200:
-                                st.success("Succesfully uploaded video. Please wait 2-5 mins and refresh the video list below.")
+                                st.success("Succesfully uploaded video. Please wait 3-6 mins and refresh the video list below.")
                             else:
                                 st.error("Error uploading video file. Contact Support")
                     else:
@@ -137,7 +137,7 @@ if (
             hi = "".join(filename.key.split('/')[1:])[:-4]
             videos.append(hi)
 
-        optionvideo = my_expander2.selectbox("Your Videos: (NOTE: Processing usually takes 5-10 mins after Step 1[Upload]) ",videos)
+        optionvideo = my_expander2.selectbox("Your Videos: (Processing usually takes 5-10 mins) ",videos)
 
     
     container3 = st.container()
