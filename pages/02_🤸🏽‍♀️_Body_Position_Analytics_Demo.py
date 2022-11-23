@@ -148,13 +148,13 @@ if (
         videos=[]
         if fetchbutton:
             filenames = getBucketFiles(user_email)
-            videos=[""]
+            videos=[" "]
         for filename in filenames:
             hi = "".join(filename.key.split('/')[1:])[:-4]
             videos.append(hi)
 
         optionvideo = my_expander2.selectbox("Your Videos: (Processing usually takes 5-10 mins) ",videos)
-    if optionvideo != "":
+    if optionvideo != " ":
         ShowVideo(optionvideo)
     
     
