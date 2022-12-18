@@ -17,7 +17,7 @@ def ShowVideo(optionvideo):
     if str(optionvideo)!=" ":
         try:
             with st.spinner('Loading Video...'):
-                back = str(user_email) + "/" + str(optionvideo)+".mp4"
+                back = str(user_email) + "/videos/" + str(optionvideo)+".mp4"
                 #st.warning(back)
                 st.video(downloadBucketFile(back))
         except:
@@ -45,7 +45,7 @@ def getBucketFiles(email):
     )
     s3 = session.resource('s3')
     mybucket = s3.Bucket("code-bear-aws-badr")
-    bucket_prefix=email+"/"
+    bucket_prefix=email+"/videos/"
     objs = mybucket.objects.filter(
     Prefix = bucket_prefix)
 
@@ -54,7 +54,7 @@ def getBucketFiles(email):
 def sendSQS(user_email,videotitle):
     sqs_client = boto3.client("sqs", region_name="eu-central-1",aws_access_key_id=st.secrets['S3_KEY'],
         aws_secret_access_key=st.secrets['S3_SECRET'])
-    filename = str(user_email)+'/'+str(videotitle)+'.mp4'
+    filename = str(user_email)+'/videos/'+str(videotitle)+'.mp4'
     #print(filename)
     message = {"text": filename}
     response = sqs_client.send_message(
@@ -76,7 +76,7 @@ def uploadMP4ToS3(mp4file,user_email,videotitle):
 
     #bucket.upload_fileo(Key="test_fileobj.mp4",Filename="./test.mp4")
     try:
-        bucket.upload_fileobj(mp4file, str(user_email)+'/'+str(videotitle)+'.mp4')
+        bucket.upload_fileobj(mp4file, str(user_email)+'/videos/'+str(videotitle)+'.mp4')
         st.success('File Successfully Uploaded')
         return True
     except FileNotFoundError:
