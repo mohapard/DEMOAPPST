@@ -148,7 +148,7 @@ if (
             filenames = getBucketFiles(user_email)
             videos=[" "]
         for filename in filenames:
-            hi = "".join(filename.key.split('/')[1:])[:-4]
+            hi = "".join(filename.key.split('/')[2:])[:-4]
             videos.append(hi)
 
         optionvideo = my_expander2.selectbox("Your Videos: (Processing usually takes 5-10 mins) ",videos)
